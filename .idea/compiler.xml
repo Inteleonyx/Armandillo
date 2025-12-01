@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.42/8365263844ebb62398e0dc33057ba10ba472d3b8/lombok-1.18.42.jar" />
+        </processorPath>
+        <module name="armandillo.neoforge.test" />
+        <module name="armandillo.neoforge.main" />
+      </profile>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <option name="defaultObfuscationEnv" value="named:intermediary" />
+        <option name="inMapFileNamedIntermediary" value="C:\Users\vitor\.gradle\caches\fabric-loom\1.21.1\loom.mappings.1_21_1.layered+hash.40545-v2\mappings.tiny" />
+        <option name="outMapFileNamedIntermediary" value="C:\Documentos\armandillo-mod\common\build\loom-cache\mixin-map-loom.mappings.1_21_1.layered+hash.40545-v2.main.tiny" />
+        <option name="outRefMapFile" value="C:\Documentos\armandillo-mod\common\build\classes\java\main\armandillo-common-common-refmap.json" />
+        <option name="quiet" value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.42/8365263844ebb62398e0dc33057ba10ba472d3b8/lombok-1.18.42.jar" />
+        </processorPath>
+        <module name="armandillo.common.main" />
+      </profile>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <option name="defaultObfuscationEnv" value="named:intermediary" />
+        <option name="inMapFileNamedIntermediary" value="C:\Users\vitor\.gradle\caches\fabric-loom\1.21.1\loom.mappings.1_21_1.layered+hash.40545-v2\mappings.tiny" />
+        <option name="outMapFileNamedIntermediary" value="C:\Documentos\armandillo-mod\common\build\loom-cache\mixin-map-loom.mappings.1_21_1.layered+hash.40545-v2.test.tiny" />
+        <option name="outRefMapFile" value="C:\Documentos\armandillo-mod\common\build\classes\java\test\test-armandillo-common-common-refmap.json" />
+        <option name="quiet" value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.42/8365263844ebb62398e0dc33057ba10ba472d3b8/lombok-1.18.42.jar" />
+        </processorPath>
+        <module name="armandillo.common.test" />
+      </profile>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <option name="defaultObfuscationEnv" value="named:intermediary" />
+        <option name="inMapFileNamedIntermediary" value="C:\Users\vitor\.gradle\caches\fabric-loom\1.21.1\loom.mappings.1_21_1.layered+hash.40545-v2\mappings.tiny" />
+        <option name="outMapFileNamedIntermediary" value="C:\Documentos\armandillo-mod\fabric\build\loom-cache\mixin-map-loom.mappings.1_21_1.layered+hash.40545-v2.main.tiny" />
+        <option name="outRefMapFile" value="C:\Documentos\armandillo-mod\fabric\build\classes\java\main\armandillo-fabric-fabric-refmap.json" />
+        <option name="quiet" value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.42/8365263844ebb62398e0dc33057ba10ba472d3b8/lombok-1.18.42.jar" />
+        </processorPath>
+        <module name="armandillo.fabric.main" />
+      </profile>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <option name="defaultObfuscationEnv" value="named:intermediary" />
+        <option name="inMapFileNamedIntermediary" value="C:\Users\vitor\.gradle\caches\fabric-loom\1.21.1\loom.mappings.1_21_1.layered+hash.40545-v2\mappings.tiny" />
+        <option name="outMapFileNamedIntermediary" value="C:\Documentos\armandillo-mod\fabric\build\loom-cache\mixin-map-loom.mappings.1_21_1.layered+hash.40545-v2.test.tiny" />
+        <option name="outRefMapFile" value="C:\Documentos\armandillo-mod\fabric\build\classes\java\test\test-armandillo-fabric-fabric-refmap.json" />
+        <option name="quiet" value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.42/8365263844ebb62398e0dc33057ba10ba472d3b8/lombok-1.18.42.jar" />
+        </processorPath>
+        <module name="armandillo.fabric.test" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="21" />
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="armandillo.common" options="-AoutRefMapFile=C:\Documentos\armandillo-mod\common\build\classes\java\main\armandillo-common-common-refmap.json -AdefaultObfuscationEnv=named:intermediary -Aquiet=true -AoutMapFileNamedIntermediary=C:\Documentos\armandillo-mod\common\build\loom-cache\mixin-map-loom.mappings.1_21_1.layered+hash.40545-v2.main.tiny -AinMapFileNamedIntermediary=C:\Users\vitor\.gradle\caches\fabric-loom\1.21.1\loom.mappings.1_21_1.layered+hash.40545-v2\mappings.tiny" />
+      <module name="armandillo.common.main" options="-AoutRefMapFile=C:\Documentos\armandillo-mod\common\build\classes\java\main\armandillo-common-common-refmap.json -AdefaultObfuscationEnv=named:intermediary -Aquiet=true -AoutMapFileNamedIntermediary=C:\Documentos\armandillo-mod\common\build\loom-cache\mixin-map-loom.mappings.1_21_1.layered+hash.40545-v2.main.tiny -AinMapFileNamedIntermediary=C:\Users\vitor\.gradle\caches\fabric-loom\1.21.1\loom.mappings.1_21_1.layered+hash.40545-v2\mappings.tiny" />
+      <module name="armandillo.common.test" options="-AoutRefMapFile=C:\Documentos\armandillo-mod\common\build\classes\java\test\test-armandillo-common-common-refmap.json -AdefaultObfuscationEnv=named:intermediary -Aquiet=true -AoutMapFileNamedIntermediary=C:\Documentos\armandillo-mod\common\build\loom-cache\mixin-map-loom.mappings.1_21_1.layered+hash.40545-v2.test.tiny -AinMapFileNamedIntermediary=C:\Users\vitor\.gradle\caches\fabric-loom\1.21.1\loom.mappings.1_21_1.layered+hash.40545-v2\mappings.tiny" />
+      <module name="armandillo.fabric" options="-AoutRefMapFile=C:\Documentos\armandillo-mod\fabric\build\classes\java\main\armandillo-fabric-fabric-refmap.json -AdefaultObfuscationEnv=named:intermediary -Aquiet=true -AoutMapFileNamedIntermediary=C:\Documentos\armandillo-mod\fabric\build\loom-cache\mixin-map-loom.mappings.1_21_1.layered+hash.40545-v2.main.tiny -AinMapFileNamedIntermediary=C:\Users\vitor\.gradle\caches\fabric-loom\1.21.1\loom.mappings.1_21_1.layered+hash.40545-v2\mappings.tiny" />
+      <module name="armandillo.fabric.main" options="-AoutRefMapFile=C:\Documentos\armandillo-mod\fabric\build\classes\java\main\armandillo-fabric-fabric-refmap.json -AdefaultObfuscationEnv=named:intermediary -Aquiet=true -AoutMapFileNamedIntermediary=C:\Documentos\armandillo-mod\fabric\build\loom-cache\mixin-map-loom.mappings.1_21_1.layered+hash.40545-v2.main.tiny -AinMapFileNamedIntermediary=C:\Users\vitor\.gradle\caches\fabric-loom\1.21.1\loom.mappings.1_21_1.layered+hash.40545-v2\mappings.tiny" />
+      <module name="armandillo.fabric.test" options="-AoutRefMapFile=C:\Documentos\armandillo-mod\fabric\build\classes\java\test\test-armandillo-fabric-fabric-refmap.json -AdefaultObfuscationEnv=named:intermediary -Aquiet=true -AoutMapFileNamedIntermediary=C:\Documentos\armandillo-mod\fabric\build\loom-cache\mixin-map-loom.mappings.1_21_1.layered+hash.40545-v2.test.tiny -AinMapFileNamedIntermediary=C:\Users\vitor\.gradle\caches\fabric-loom\1.21.1\loom.mappings.1_21_1.layered+hash.40545-v2\mappings.tiny" />
+    </option>
+  </component>
+</project>
