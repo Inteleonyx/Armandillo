@@ -1,6 +1,6 @@
 package dev.inteleonyx.armandillo.core.registry;
 
-import dev.inteleonyx.armandillo.lang.modules.IArmandilloModule;
+import dev.inteleonyx.armandillo.api.IArmandilloModule;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -2,7 +2,7 @@ package dev.inteleonyx.armandillo.lang.modules.recipes;
 
 import dev.inteleonyx.armandillo.api.luaj.LuaTable;
 import dev.inteleonyx.armandillo.api.luaj.LuaValue;
-import dev.inteleonyx.armandillo.lang.modules.IArmandilloModule;
+import dev.inteleonyx.armandillo.api.IArmandilloModule;
 import dev.inteleonyx.armandillo.lang.modules.recipes.functions.RecipeRemoveFunction;
 
 /**

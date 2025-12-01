@@ -8,6 +8,6 @@ import dev.inteleonyx.armandillo.luaj.ILuaEnvironment;
  */
 public interface IArmandilloLoader {
     void initialize();
-
     ILuaEnvironment getEnvironment();
+    void reloadScripts();
 }

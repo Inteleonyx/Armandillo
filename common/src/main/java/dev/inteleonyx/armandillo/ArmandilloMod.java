@@ -1,6 +1,8 @@
 package dev.inteleonyx.armandillo;
 
+import dev.architectury.event.events.common.CommandRegistrationEvent;
 import dev.architectury.platform.Platform;
+import dev.inteleonyx.armandillo.commands.ArmandilloCommand;
 import dev.inteleonyx.armandillo.core.impl.ArmandilloLoader;
 import dev.inteleonyx.armandillo.utils.FolderSetup;
 import lombok.Getter;
@@ -35,6 +37,10 @@ public final class ArmandilloMod {
             System.err.println("[Armandillo] ❌ Failed to setup root folder.");
             return;
         }
+
+        CommandRegistrationEvent.EVENT.register((dispatcher, registryAccess, environment) -> {
+            new ArmandilloCommand(this.loader).register(dispatcher);
+        });
 
         // ✅ Finalmente inicializamos o loader
         this.loader.initialize();

@@ -11,5 +11,5 @@ dependencies {
     modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
 
     implementation 'org.apache.bcel:bcel:5.2'
-
+    implementation 'net.kyori:adventure-api:4.25.0'
 }

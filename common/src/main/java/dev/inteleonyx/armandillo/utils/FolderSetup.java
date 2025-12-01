@@ -9,6 +9,7 @@ public class FolderSetup {
     private static final String SCRIPTS_FOLDER = "scripts";
     private static final String CONFIG_FOLDER = "config";
     private static final String DATAPACK_FOLDER = "datapack";
+    private static final String ASSETS_FOLDER = "assets";
 
     public static Path setupFolders(Path baseDir) {
         // ✅ Se baseDir for null, aborta antes de tudo
@@ -22,6 +23,7 @@ public class FolderSetup {
         Path scripts = root.resolve(SCRIPTS_FOLDER);
         Path config = root.resolve(CONFIG_FOLDER);
         Path datapack = root.resolve(DATAPACK_FOLDER);
+        Path assets = root.resolve(ASSETS_FOLDER);
 
         try {
             System.out.println("[Armandillo] Checking folder validity at: " + root.toAbsolutePath());
@@ -45,6 +47,11 @@ public class FolderSetup {
             if (!Files.exists(datapack)) {
                 Files.createDirectories(datapack);
                 System.out.println("[Armandillo] 🎒 Datapack folder created.");
+            }
+
+            if (!Files.exists(assets)) {
+                Files.createDirectories(datapack);
+                System.out.println("[Armandillo] 🎨 Assets folder created.");
             }
 
             // ✅ No final retorna o root já garantido

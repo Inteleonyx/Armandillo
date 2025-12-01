@@ -33,9 +33,10 @@ public class ArmandilloLoader implements IArmandilloLoader {
         ModuleRegistry registry = ModuleRegistry.getInstance();
         registry.register(new RecipeModule());
         LuaValue armandilloGlobal = LuaValue.tableOf();
-
         armandilloGlobal.set("module", new ArmandilloModuleFunction());
         armandilloGlobal.set("load_class", new ArmandilloLoadClass());
+
+        luaEnvironment.registerGlobal("Armandillo",  armandilloGlobal);
 
         List<String> scriptPaths = ScriptFinder.find(ArmandilloMod.ARMANDILLO_ROOT_PATH);
 
@@ -56,5 +57,20 @@ public class ArmandilloLoader implements IArmandilloLoader {
     @Override
     public ILuaEnvironment getEnvironment() {
         return this.luaEnvironment;
+    }
+
+    @Override
+    public void reloadScripts() {
+        List<String> scriptPaths = ScriptFinder.find(ArmandilloMod.ARMANDILLO_ROOT_PATH);
+
+        for (String path : scriptPaths) {
+            try {
+                String luaCode = new String(Files.readAllBytes(Paths.get(path)), StandardCharsets.UTF_8);
+                luaEnvironment.runScript(luaCode);
+            } catch (Exception e) {
+                System.err.println("[Armandillo] Failed to load script from path: " + path);
+                e.printStackTrace();
+            }
+        }
     }
 }
