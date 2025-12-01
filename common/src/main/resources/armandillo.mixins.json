@@ -1,6 +1,7 @@
 {
   "required": true,
   "package": "dev.inteleonyx.armandillo.mixin",
+  "plugin": "dev.inteleonyx.armandillo.ArmandilloMixinPlugin",
   "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
   "client": [
