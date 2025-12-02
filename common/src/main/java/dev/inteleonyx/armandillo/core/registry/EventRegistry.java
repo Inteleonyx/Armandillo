@@ -1,9 +1,10 @@
 package dev.inteleonyx.armandillo.core.registry;
 
 import dev.inteleonyx.armandillo.api.luaj.Globals;
-import dev.inteleonyx.armandillo.core.event.ArmandilloEvent;
+import dev.inteleonyx.armandillo.core.objects.ArmandilloEvent;
 import dev.inteleonyx.armandillo.core.lang.functions.ArmandilloEventFunction;
 import dev.inteleonyx.armandillo.registry.ArmandilloRegistries;
+import lombok.Getter;
 
 import java.util.Map;
 import java.util.Optional;
@@ -15,6 +16,8 @@ import java.util.Optional;
 
 public class EventRegistry {
     private static final EventRegistry INSTANCE = new EventRegistry();
+
+    @Getter
     Map<String, ArmandilloEvent> allEvents = ArmandilloRegistries.EVENTS.getAll();
 
     public static EventRegistry getInstance() {
@@ -32,6 +35,13 @@ public class EventRegistry {
             ArmandilloEventFunction function = new ArmandilloEventFunction();
 
             globals.set(eventName, function);
+        }
+    }
+
+    public void unregister() {
+        for (Map.Entry<String, ArmandilloEvent> entry : allEvents.entrySet()) {
+            ArmandilloEvent event = entry.getValue();
+            event.clearLuaHandlers();
         }
     }
 

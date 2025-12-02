@@ -1,7 +1,6 @@
 package dev.inteleonyx.armandillo.event;
 
-import dev.inteleonyx.armandillo.core.event.ArmandilloEvent;
-import dev.architectury.event.events.common.LifecycleEvent;
+import dev.inteleonyx.armandillo.core.objects.ArmandilloEvent;
 
 /**
  * @author Inteleonyx. Created on 01/12/2025
@@ -9,12 +8,12 @@ import dev.architectury.event.events.common.LifecycleEvent;
  */
 
 public class TickEvent extends ArmandilloEvent {
-    public TickEvent(String eventName) {
-        super(eventName);
+    public TickEvent() {
+        super("tick");
     }
 
     @Override
     protected void listenGameEvent() {
-        LifecycleEvent.SERVER_STARTED.register(this::dispatch);
+        dev.architectury.event.events.common.TickEvent.SERVER_POST.register(this::dispatch);
     }
 }

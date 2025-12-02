@@ -1,4 +1,4 @@
-package dev.inteleonyx.armandillo.core.event;
+package dev.inteleonyx.armandillo.core.objects;
 
 import dev.inteleonyx.armandillo.api.luaj.LuaValue;
 import lombok.Getter;
@@ -18,9 +18,7 @@ public abstract class ArmandilloModule {
 
     public abstract LuaValue getModuleEngine();
 
-    public void init() {
-
-    }
+    public abstract void init();
 
     public void onPostLoad() {
 

@@ -1,8 +1,7 @@
 package dev.inteleonyx.armandillo.recipes;
 
-import dev.inteleonyx.armandillo.api.luaj.LuaTable;
 import dev.inteleonyx.armandillo.api.luaj.LuaValue;
-import dev.inteleonyx.armandillo.registry.ArmandilloModule;
+import dev.inteleonyx.armandillo.core.objects.ArmandilloModule;
 import dev.inteleonyx.armandillo.recipes.functions.RecipeRemoveFunction;
 
 /**
@@ -10,22 +9,11 @@ import dev.inteleonyx.armandillo.recipes.functions.RecipeRemoveFunction;
  * @project armandillo
  */
 
-public class RecipesArmandilloModule implements ArmandilloModule {
-    private final LuaTable engine;
+public class RecipesArmandilloModule extends ArmandilloModule {
+    LuaValue engine;
 
     public RecipesArmandilloModule() {
-        // Criamos a tabela 'engine' e populamos com as funções
-        this.engine = new LuaTable();
-
-        // Registra as funções que o script vai usar: engine.remove, engine.shaped
-        this.engine.set("remove", new RecipeRemoveFunction(this));
-        //this.engine.set("shaped", new ShapedFunction());
-        // this.engine.set("shapeless", ...);
-    }
-
-    @Override
-    public String getModuleId() {
-        return "recipes";
+        super("recipes");
     }
 
     @Override
@@ -34,8 +22,7 @@ public class RecipesArmandilloModule implements ArmandilloModule {
     }
 
     @Override
-    public void onPostLoad() {
-        // Aqui você poderia disparar o reload das receitas do Minecraft se necessário
-        System.out.println("[Armandillo] Receitas processadas.");
+    public void init() {
+        this.engine.set("remove", new RecipeRemoveFunction(this));
     }
 }

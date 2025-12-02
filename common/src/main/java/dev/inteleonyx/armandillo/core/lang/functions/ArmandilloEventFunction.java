@@ -3,10 +3,12 @@ package dev.inteleonyx.armandillo.core.lang.functions;
 import dev.inteleonyx.armandillo.api.luaj.LuaValue;
 import dev.inteleonyx.armandillo.api.luaj.Varargs;
 import dev.inteleonyx.armandillo.api.luaj.lib.VarArgFunction;
-import dev.inteleonyx.armandillo.core.event.ArmandilloEvent;
+import dev.inteleonyx.armandillo.core.objects.ArmandilloEvent;
 import dev.inteleonyx.armandillo.core.registry.EventRegistry;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,7 +17,7 @@ import java.util.Map;
  */
 
 public class ArmandilloEventFunction extends VarArgFunction {
-    private final Map<String, LuaValue> registeredCallbacks = new HashMap<>();
+    private final Map<String, List<LuaValue>> registeredCallbacks = new HashMap<>();
 
     @Override
     public Varargs invoke(Varargs args) {
@@ -35,15 +37,20 @@ public class ArmandilloEventFunction extends VarArgFunction {
                 .getEvent(eventName)
                 .orElseThrow(() -> new IllegalArgumentException("Unknown event name: " + eventName));
 
-        registeredCallbacks.put(eventName, callback);
+        registeredCallbacks.computeIfAbsent(eventName, k -> new ArrayList<>()).add(callback);
 
-        event.setLuaHandler(nativeEvent -> {
-            try {
-                LuaValue luaEvent = convertNativeEventToLua(nativeEvent);
-                callback.call(luaEvent);
-            } catch (Exception e) {
-                System.err.println("[Armandillo] Error calling Lua event callback for '" + eventName + "': " + e.getMessage());
-                e.printStackTrace();
+        event.addLuaHandler(nativeEvent -> {
+            List<LuaValue> callbacks = registeredCallbacks.get(eventName);
+            if (callbacks == null) {
+                return;
+            }
+            for (LuaValue func : callbacks) {
+                try {
+                    LuaValue luaEvent = convertNativeEventToLua(nativeEvent);
+                    func.call(luaEvent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -52,6 +59,10 @@ public class ArmandilloEventFunction extends VarArgFunction {
 
     private LuaValue convertNativeEventToLua(Object nativeEvent) {
         return LuaValue.userdataOf(nativeEvent);
+    }
+
+    public void purgeEvents() {
+        registeredCallbacks.clear();
     }
 }
 

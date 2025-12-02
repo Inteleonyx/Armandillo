@@ -1,11 +1,11 @@
-package dev.inteleonyx.armandillo.core.event;
+package dev.inteleonyx.armandillo.core.objects;
 
 import dev.architectury.event.events.common.LifecycleEvent;
-import dev.inteleonyx.armandillo.api.luaj.LuaValue;
 import dev.inteleonyx.armandillo.utils.annotations.ArmandilloRuntime;
 import lombok.Getter;
-import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 
 /**
@@ -18,8 +18,7 @@ public abstract class ArmandilloEvent {
     @Getter
     protected final String eventName;
 
-    @Setter
-    protected Consumer<Object> luaHandler;
+    private final List<Consumer<Object>> luaHandlers = new ArrayList<>();
 
     protected ArmandilloEvent(String eventName) {
         this.eventName = eventName;
@@ -28,11 +27,21 @@ public abstract class ArmandilloEvent {
 
     protected abstract void listenGameEvent();
 
+    public void addLuaHandler(Consumer<Object> handler) {
+        luaHandlers.add(handler);
+    }
+
+    public void removeLuaHandler(Consumer<Object> handler) {
+        luaHandlers.remove(handler);
+    }
+
+    public void clearLuaHandlers() {
+        luaHandlers.clear();
+    }
+
     protected void dispatch(Object nativeEvent) {
-        if (luaHandler != null) {
+        for (Consumer<Object> luaHandler : luaHandlers) {
             luaHandler.accept(nativeEvent);
         }
     }
-
-
 }

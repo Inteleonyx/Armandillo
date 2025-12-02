@@ -62,6 +62,15 @@ public class ArmandilloLoader implements IArmandilloLoader {
 
     @Override
     public void reloadScripts() {
+        EventRegistry eventRegistry = EventRegistry.getInstance();
+        ModuleRegistry moduleRegistry = ModuleRegistry.getInstance();
+
+        eventRegistry.unregister();
+        //moduleRegistry.register(luaEnvironment.getGlobals());
+
+        eventRegistry.register(luaEnvironment.getGlobals());
+        //moduleRegistry.unre
+
         List<String> scriptPaths = ScriptFinder.find(ArmandilloMod.ARMANDILLO_ROOT_PATH);
 
         for (String path : scriptPaths) {

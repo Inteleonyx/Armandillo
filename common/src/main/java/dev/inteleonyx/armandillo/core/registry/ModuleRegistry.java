@@ -1,7 +1,7 @@
 package dev.inteleonyx.armandillo.core.registry;
 
 import dev.inteleonyx.armandillo.api.luaj.Globals;
-import dev.inteleonyx.armandillo.core.event.ArmandilloModule;
+import dev.inteleonyx.armandillo.core.objects.ArmandilloModule;
 import dev.inteleonyx.armandillo.core.lang.functions.ArmandilloModuleFunction;
 import dev.inteleonyx.armandillo.registry.ArmandilloRegistries;
 
