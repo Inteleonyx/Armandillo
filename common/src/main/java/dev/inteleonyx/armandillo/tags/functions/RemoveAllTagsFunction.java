@@ -11,6 +11,6 @@ import dev.inteleonyx.armandillo.api.luaj.lib.TwoArgFunction;
 public class RemoveAllTagsFunction extends TwoArgFunction {
     @Override
     public LuaValue call(LuaValue var1, LuaValue var2) {
-        return null;
+        return LuaValue.NIL;
     }
 }

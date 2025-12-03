@@ -1,5 +1,7 @@
 package dev.inteleonyx.armandillo;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import dev.architectury.event.events.common.CommandRegistrationEvent;
 import dev.architectury.platform.Platform;
 import dev.inteleonyx.armandillo.commands.ArmandilloCommand;
@@ -19,12 +21,18 @@ public final class ArmandilloMod {
     @Getter
     private static ArmandilloMod INSTANCE;
 
-    // ❗ Não chame init no construtor estático
+    @Getter
+    private static final Gson GSON = new GsonBuilder()
+            .setPrettyPrinting()
+            .disableHtmlEscaping()
+            .serializeNulls()
+            .create();
+
     public ArmandilloMod() {
-        INSTANCE = this; // ✅ define a instância antes de tudo
+
+        INSTANCE = this;
         this.loader = new ArmandilloLoader();
 
-        // ✅ Agora sim podemos usar getGameFolder()
         Path baseDir = Platform.getGameFolder();
         if (baseDir == null) {
             System.err.println("[Armandillo] ❌ Platform.getGameFolder() returned NULL!");
@@ -42,7 +50,6 @@ public final class ArmandilloMod {
             new ArmandilloCommand(this.loader).register(dispatcher);
         });
 
-        // ✅ Finalmente inicializamos o loader
         this.loader.initialize();
         System.out.println("[Armandillo] ✅ Mod initialized successfully!");
     }
