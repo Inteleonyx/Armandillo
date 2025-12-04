@@ -38,11 +38,13 @@ public class EventRegistry {
         }
     }
 
-    public void unregister() {
+    public boolean unregister() {
         for (Map.Entry<String, ArmandilloEvent> entry : allEvents.entrySet()) {
             ArmandilloEvent event = entry.getValue();
             event.clearLuaHandlers();
+            return true;
         }
+        return false;
     }
 
     public Optional<ArmandilloEvent> getEvent(String eventName) {

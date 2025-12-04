@@ -28,9 +28,9 @@ public class ModuleRegistry {
             String moduleName = entry.getKey();
             ArmandilloModule module = entry.getValue();
 
-            ArmandilloModuleFunction function = new ArmandilloModuleFunction();
+            module.init();
 
-            globals.set(moduleName, function);
+            globals.set(moduleName, module.getModuleEngine());
         }
     }
 
