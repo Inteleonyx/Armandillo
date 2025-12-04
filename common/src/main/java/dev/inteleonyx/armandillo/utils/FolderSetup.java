@@ -37,20 +37,20 @@ public class FolderSetup {
                 System.out.println("[Armandillo] 📜 Scripts folder created.");
             }
 
-            if (!Files.exists(config)) {
-                Files.createDirectories(config);
-                System.out.println("[Armandillo] ⚙️ Config folder created.");
-            }
+            //if (!Files.exists(config)) {
+                //Files.createDirectories(config);
+                //System.out.println("[Armandillo] ⚙️ Config folder created.");
+            //}
 
-            if (!Files.exists(datapack)) {
-                Files.createDirectories(datapack);
-                System.out.println("[Armandillo] 🎒 Datapack folder created.");
-            }
+            //if (!Files.exists(datapack)) {
+                //Files.createDirectories(datapack);
+                //System.out.println("[Armandillo] 🎒 Datapack folder created.");
+            //}
 
-            if (!Files.exists(assets)) {
-                Files.createDirectories(datapack);
-                System.out.println("[Armandillo] 🎨 Assets folder created.");
-            }
+            //if (!Files.exists(assets)) {
+                //Files.createDirectories(assets);
+                //System.out.println("[Armandillo] 🎨 Assets folder created.");
+            //}
 
             System.out.println("[Armandillo] ✅ Folder structure verified/OK.");
             return root;

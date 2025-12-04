@@ -31,7 +31,7 @@ public class ArmandilloModuleFunction extends VarArgFunction {
                 e.printStackTrace();
             }
         }, () -> {
-            System.err.println("[Armandillo]: Módulo '" + moduleId + "' não encontrado.");
+            System.err.println("[Armandillo]: Module '" + moduleId + "' wasn't found");
         });
 
         return LuaValue.NIL;

@@ -5,7 +5,7 @@ import dev.inteleonyx.armandillo.api.luaj.LuaTable;
 import dev.inteleonyx.armandillo.api.luaj.LuaValue;
 import dev.inteleonyx.armandillo.api.luaj.Varargs;
 import dev.inteleonyx.armandillo.api.luaj.lib.VarArgFunction;
-import dev.inteleonyx.armandillo.core.registry.RuntimeRecipeRegistry;
+import dev.inteleonyx.armandillo.core.registry.RuntimeDataRegistry;
 import dev.inteleonyx.armandillo.recipes.RecipeBuilder;
 import dev.inteleonyx.armandillo.utils.ItemEntry;
 import net.minecraft.resources.ResourceLocation;
@@ -32,7 +32,7 @@ public class RecipeShapedFunction extends VarArgFunction {
 
         LuaValue patternValue = recipeTable.get(2);
         if (patternValue.isnil()) {
-            throw new IllegalArgumentException("Receita Shaped: Tabela de Pattern (segundo argumento) está faltando ou é nil.");
+            throw new IllegalArgumentException("Recipe Shaped: Pattern Table (second argument) is missing or nil.");
         }
         LuaTable patternTable = patternValue.checktable();
         List<String> patternList = new ArrayList<>();
@@ -42,13 +42,13 @@ public class RecipeShapedFunction extends VarArgFunction {
             if (lineValue.isstring()) {
                 patternList.add(lineValue.checkjstring());
             } else if (!lineValue.isnil()) {
-                throw new IllegalArgumentException("Receita Shaped: A linha do padrão " + i + " deve ser uma string válida.");
+                throw new IllegalArgumentException("ShapedRecipe: Line " + i + " must be a valid string");
             }
         }
 
         LuaValue keysValue = recipeTable.get(3);
         if (keysValue.isnil()) {
-            throw new IllegalArgumentException("Receita Shaped: Tabela de Keys (terceiro argumento) está faltando ou é nil.");
+            throw new IllegalArgumentException("Recipe Shaped: Keys table (third argument) is missing or nil.");
         }
         LuaTable keysTable = keysValue.checktable();
         Map<String, String> keysMap = new HashMap<>();
@@ -71,10 +71,9 @@ public class RecipeShapedFunction extends VarArgFunction {
 
         JsonObject recipeJson = builder.build();
 
-        System.out.println(recipeJson.toString());
         String path = resultString.replace(":", "_") + "_shaped_" + Integer.toHexString(recipeJson.hashCode());
 
-        RuntimeRecipeRegistry.addData(ResourceLocation.fromNamespaceAndPath("armandillo", path), recipeJson);
+        RuntimeDataRegistry.addRecipeData(ResourceLocation.fromNamespaceAndPath("armandillo", path), recipeJson);
 
         return LuaValue.NIL;
     }

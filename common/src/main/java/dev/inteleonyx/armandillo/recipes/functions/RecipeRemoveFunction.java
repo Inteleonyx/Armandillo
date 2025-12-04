@@ -4,7 +4,7 @@ import dev.inteleonyx.armandillo.api.luaj.LuaTable;
 import dev.inteleonyx.armandillo.api.luaj.LuaValue;
 import dev.inteleonyx.armandillo.api.luaj.Varargs;
 import dev.inteleonyx.armandillo.api.luaj.lib.VarArgFunction;
-import dev.inteleonyx.armandillo.core.registry.RuntimeRecipeRegistry;
+import dev.inteleonyx.armandillo.core.registry.RuntimeDataRegistry;
 
 /**
  * @author Inteleonyx. Created on 26/11/2025
@@ -30,11 +30,11 @@ public class RecipeRemoveFunction extends VarArgFunction {
             type = "mod";
             value = table.get("mod").checkjstring();
         } else {
-            throw new IllegalArgumentException("engine.remove deve especificar 'id', 'result' ou 'mod'.");
+            throw new IllegalArgumentException("engine.remove needs to specify 'id', 'result' or 'mod'.");
         }
 
         String criteria = type.toLowerCase() + ":" + value;
-        RuntimeRecipeRegistry.addRemovalCriteria(criteria);
+        RuntimeDataRegistry.addRecipeRemovalCriteria(criteria);
 
         return LuaValue.NIL;
     }

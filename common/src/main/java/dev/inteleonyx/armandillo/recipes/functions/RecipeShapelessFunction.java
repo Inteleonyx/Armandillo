@@ -5,7 +5,7 @@ import dev.inteleonyx.armandillo.api.luaj.LuaTable;
 import dev.inteleonyx.armandillo.api.luaj.LuaValue;
 import dev.inteleonyx.armandillo.api.luaj.Varargs;
 import dev.inteleonyx.armandillo.api.luaj.lib.VarArgFunction;
-import dev.inteleonyx.armandillo.core.registry.RuntimeRecipeRegistry;
+import dev.inteleonyx.armandillo.core.registry.RuntimeDataRegistry;
 import dev.inteleonyx.armandillo.recipes.RecipeBuilder;
 import dev.inteleonyx.armandillo.utils.ItemEntry;
 import net.minecraft.resources.ResourceLocation;
@@ -33,7 +33,7 @@ public class RecipeShapelessFunction extends VarArgFunction {
         // Ingredientes (index 2, deve ser um ARRAY/TABLE)
         LuaValue ingredientArrayValue = table.get(2);
         if (ingredientArrayValue.isnil()) {
-            throw new IllegalArgumentException("shapeless: ingredient table missing");
+            throw new IllegalArgumentException("Shapeless: ingredient table missing");
         }
 
         LuaTable ingredientArray = ingredientArrayValue.checktable();
@@ -46,11 +46,11 @@ public class RecipeShapelessFunction extends VarArgFunction {
             if (v.isstring()) {
                 String ing = v.checkjstring();
                 if (!unique.add(ing)) {
-                    throw new IllegalArgumentException("shapeless: duplicated ingredient '" + ing + "'");
+                    throw new IllegalArgumentException("Shapeless: duplicated ingredient '" + ing + "'");
                 }
                 ingredients.add(ing);
             } else if (!v.isnil()) {
-                throw new IllegalArgumentException("shapeless: ingredient must be string[]");
+                throw new IllegalArgumentException("Shapeless: ingredient must be string[]");
             }
         }
 
@@ -62,10 +62,9 @@ public class RecipeShapelessFunction extends VarArgFunction {
 
         JsonObject recipeJson = builder.build();
 
-        System.out.println(recipeJson.toString());
         String path = resultString.replace(":", "_") + "_shapeless_" + Integer.toHexString(recipeJson.hashCode());
 
-        RuntimeRecipeRegistry.addData(ResourceLocation.fromNamespaceAndPath("armandillo", path), recipeJson);
+        RuntimeDataRegistry.addRecipeData(ResourceLocation.fromNamespaceAndPath("armandillo", path), recipeJson);
 
         return LuaValue.NIL;
     }

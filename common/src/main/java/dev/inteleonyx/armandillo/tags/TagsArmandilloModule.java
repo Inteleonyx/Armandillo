@@ -10,7 +10,7 @@ import dev.inteleonyx.armandillo.tags.functions.*;
  */
 
 public class TagsArmandilloModule extends ArmandilloModule {
-    LuaValue engine;
+    LuaValue engine = LuaValue.tableOf();
 
     public TagsArmandilloModule() {
         super("tags");
@@ -23,8 +23,7 @@ public class TagsArmandilloModule extends ArmandilloModule {
 
     @Override
     public void init() {
-        this.engine.set("create_item_tag", new RemoveTagFunction());
-        this.engine.set("create_block_tag", new AddBlockTagFunction());
+        this.engine.set("add", new AddTagFunction());
         this.engine.set("remove", new RemoveTagFunction());
         this.engine.set("remove_all", new RemoveAllTagsFunction());
         this.engine.set("remove_all_tags_from", new RemoveAllTagsFromFunction());

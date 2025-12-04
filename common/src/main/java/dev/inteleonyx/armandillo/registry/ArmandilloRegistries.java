@@ -21,7 +21,7 @@ public class ArmandilloRegistries {
 
         //MODULES
         MODULES.register("recipes", RecipesArmandilloModule::new);
-        //MODULES.register("tags", TagsArmandilloModule::new);
+        MODULES.register("tags", TagsArmandilloModule::new);
     }
 
     private ArmandilloRegistries() {}

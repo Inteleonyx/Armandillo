@@ -1,8 +1,8 @@
-package dev.inteleonyx.armandillo.mixin;
+package dev.inteleonyx.armandillo.core.mixin;
 
 import com.google.gson.JsonElement;
-import dev.inteleonyx.armandillo.core.registry.RuntimeRecipeRegistry;
-import dev.inteleonyx.armandillo.utils.RemoveRecipe;
+import dev.inteleonyx.armandillo.core.processor.RecipeProcessor;
+import dev.inteleonyx.armandillo.core.registry.RuntimeDataRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.profiling.ProfilerFiller;
@@ -22,10 +22,9 @@ import java.util.Map;
 @Mixin(RecipeManager.class)
 public class RecipeManagerMixin {
     @Inject(method = "apply", at = @At("HEAD"))
-    protected void injectRuntimeRecipes(Map<ResourceLocation, JsonElement> map, ResourceManager resourceManager, ProfilerFiller profiler, CallbackInfo ci) {
-        RemoveRecipe.applyRemovals(map);
+    protected void armandillo$injectRuntimeRecipes(Map<ResourceLocation, JsonElement> map, ResourceManager resourceManager, ProfilerFiller profiler, CallbackInfo ci) {
+        RecipeProcessor.processRecipes(map);
 
-        Map<ResourceLocation, JsonElement> generatedRecipes = (Map) RuntimeRecipeRegistry.getAllData();
-        map.putAll(generatedRecipes);
+        RuntimeDataRegistry.clearRecipeCache();
     }
 }

@@ -45,15 +45,15 @@ public class ArmandilloCommand {
                     context.getSource().getServer().getCommands().getDispatcher().parse("reload", serverSource)
             );
 
-            context.getSource().sendSuccess(() -> Component.translatable("armandillo.command.reload.success"), true);
+            context.getSource().sendSuccess(() -> Component.literal("Reloaded!"), true);
 
         } catch (CommandSyntaxException e) {
-            System.err.println("Erro ao executar o comando /reload: " + e.getMessage());
+            System.err.println("Error when executing /reload: " + e.getMessage());
             context.getSource().sendFailure(Component.literal("Erro ao recarregar o servidor: " + e.getMessage()));
             return 0;
         }
 
-        context.getSource().sendSuccess(() -> Component.translatable("armandillo.command.reload.success"), true);
+        context.getSource().sendSuccess(() -> Component.literal("Reloaded!"), true);
         return 1; // sucesso
     }
 }

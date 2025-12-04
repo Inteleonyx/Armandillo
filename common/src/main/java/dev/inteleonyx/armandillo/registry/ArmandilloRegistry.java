@@ -19,7 +19,6 @@ public class ArmandilloRegistry<T> {
         }
         T instance = supplier.get();
         entries.put(id, instance);
-        System.out.println("[ArmandilloRegistry] Registered: " + id);
         return instance;
     }
 

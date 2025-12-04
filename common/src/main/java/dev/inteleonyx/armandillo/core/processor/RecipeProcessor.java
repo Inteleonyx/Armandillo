@@ -1,25 +1,30 @@
-package dev.inteleonyx.armandillo.utils;
+package dev.inteleonyx.armandillo.core.processor;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import dev.inteleonyx.armandillo.core.registry.RuntimeRecipeRegistry;
+import dev.inteleonyx.armandillo.core.registry.RuntimeDataRegistry;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 /**
- * @author Inteleonyx. Created on 03/12/2025
+ * @author Inteleonyx. Created on 04/12/2025
  * @project armandillo
  */
 
-public class RemoveRecipe {
-    public static void applyRemovals(Map<ResourceLocation, JsonElement> map) {
+public class RecipeProcessor {
+    public static void processRecipes(Map<ResourceLocation, JsonElement> map) {
+        applyRemovals(map);
+        injectNewRecipes(map);
+    }
 
+    private static void applyRemovals(Map<ResourceLocation, JsonElement> map) {
         Set<ResourceLocation> recipesToRemove = new HashSet<>();
 
-        for (String criteria : RuntimeRecipeRegistry.getRemovalCriteria()) {
+        for (String criteria : RuntimeDataRegistry.getRecipeRemovalCriteria()) {
 
             String[] parts = criteria.split(":", 2);
             if (parts.length != 2) continue;
@@ -38,7 +43,7 @@ public class RemoveRecipe {
                 } else if (type.equals("mod") && id.getNamespace().equals(value)) {
                     match = true;
                 } else if (type.equals("result")) {
-                    if (json.isJsonObject() && getRecipeResultId(json.getAsJsonObject()).equals(value)) {
+                    if (json.isJsonObject() && Objects.equals(getRecipeResultId(json.getAsJsonObject()), value)) {
                         match = true;
                     }
                 }
@@ -51,7 +56,6 @@ public class RemoveRecipe {
 
         for (ResourceLocation id : recipesToRemove) {
             map.remove(id);
-            System.out.println("[Armandillo Processor] Receita removida do jogo: " + id);
         }
     }
 
@@ -78,5 +82,9 @@ public class RemoveRecipe {
         }
 
         return "";
+    }
+
+    private static void injectNewRecipes(Map<ResourceLocation, JsonElement> map) {
+        map.putAll(RuntimeDataRegistry.getAllRecipeData());
     }
 }
